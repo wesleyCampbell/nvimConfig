@@ -83,6 +83,6 @@ local _plugin_dep__nvim_web_devicons = {
 }
 
 return {
-	nvim_tree_config = _plugin__nvim_tree,
-	nvim_tree_dep__nvim_web_devicons = _plugin_dep__nvim_web_devicons
+	_plugin__nvim_tree,
+	_plugin_dep__nvim_web_devicons,
 }

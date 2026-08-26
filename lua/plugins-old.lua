@@ -9,7 +9,6 @@ local lsp_functionality_plugins = require("lsp_functionality_plugin")
 local cscope_plugin = require("cscope_plugin")
 local nvim_tree_plugin = require("nvim-tree_plugin")
 local visuals = require("visuals")
-local java = require("java")
 
 return {
 	

@@ -129,8 +129,8 @@ local _plugin__nvim_treesitter_config = {
 }
 
 return {
-	blink_cmp_config = _plugin__blink_cmp_config,
-	lspconfig_config = _plugin__lspconfig_config,
-	nvim_treesitter_config = _plugin__nvim_treesitter_config
+	_plugin__blink_cmp_config,
+	_plugin__lspconfig_config,
+	_plugin__nvim_treesitter_config,
 }
 

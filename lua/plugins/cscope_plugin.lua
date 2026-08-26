@@ -52,6 +52,6 @@ local _plugin_dep__snacks_config = {
 }
 
 return {
-	cscope_config = _plugin__cscope_config,
-	cscope_dep__snacks_config = _plugin_dep__snacks_config
+	_plugin__cscope_config,
+	_plugin_dep__snacks_config,
 }

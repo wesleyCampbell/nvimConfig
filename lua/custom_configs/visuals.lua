@@ -1,18 +1,8 @@
-local tables = require("tables")
--- Changes tab spacing to 4 spaces
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+local tables = require("lib.tables")
 
--- Enables line numbers
--- vim.cmd("set relativenumber")
-vim.cmd("set number")
-
--- Enables 24 bit colors 
-vim.opt.termguicolors = true 
-
---//==========================================\\--
---|               FUNCTIONS                    | 
---\\==========================================//--
+-------------------------------------------------------------------------------
+--- FUNCTIONS
+-------------------------------------------------------------------------------
 
 function toggleLineNumberType()
 	if vim.opt.number:get() then
@@ -47,9 +37,9 @@ function themeRosePineSet()
 	vim.cmd("colorscheme rose-pine")
 end
 
---//==========================================\\--
---|                  MAIN                      |
---\\==========================================//--
+-------------------------------------------------------------------------------
+--- MAIN
+-------------------------------------------------------------------------------
 
 local defaultTheme = "everforest"
 local currentTheme = defaultTheme
@@ -94,43 +84,27 @@ function rotateTheme()
 	setTheme(newTheme)
 end
 
---//==========================================\\--
---|               KEYBINDS                     | 
---\\==========================================//--
+-------------------------------------------------------------------------------
+--- KEYBINDS
+-------------------------------------------------------------------------------
 
 vim.keymap.set('n', '<C-t><C-n>', function () toggleLineNumberType() end, {noremap = true, silent = true})
 
 vim.keymap.set('n', '<C-t><C-t>', function () rotateTheme() end, {noremap = true, silent = true})
 
---//==========================================\\--
---|                GLOBAL                      | 
---\\==========================================//--
+-------------------------------------------------------------------------------
+--- SET CONFIGURATIONS
+-------------------------------------------------------------------------------
 
-local _plugin__rose_pine_config = {
-	"rose-pine/neovim",
-	name = "rose-pine",
-	config = function()
-		setDefaultTheme()
-	end
-}
+-- Changes tab spacing to 4 spaces
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
-local _plugin__everforest_config = {
-	"sainnhe/everforest",
-	name = "everforest",
-	config = function()
-		setDefaultTheme()
-	end
-}
-local _plugin__catppuccin_config = {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	config = function()
-		setDefaultTheme()
-	end
-}
+-- Enables line numbers
+-- vim.cmd("set relativenumber")
+vim.cmd("set number")
 
-return {
-	plugin__rose_pine_config = _plugin__rose_pine_config,
-	plugin__everforest_config = _plugin__everforest_config,
-	plugin__catppuccin_config = _plugin__catppuccin_config 
-}
+-- Enables 24 bit colors 
+vim.opt.termguicolors = true 
+
+setDefaultTheme()
