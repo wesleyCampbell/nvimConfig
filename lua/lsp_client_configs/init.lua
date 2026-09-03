@@ -15,6 +15,7 @@
 ------------------------------------------------------------------------------
 
 local lua_fetch = require("lib.fetch_lua_files")
+local tables = require("lib.tables")
 
 DIR_PATH = "~/.config/nvim/lua/lsp_client_configs"
 
@@ -43,11 +44,28 @@ function loadClientConfigs(modules, dir_path)
 		-- us to check to see if the modern method exists. If not, we call legacy.
 		-- If it does, we can use the up to date method.
 		if not vim.lsp.config then
+			-- Neovim < 0.11
 			local lspconfig = require("lspconfig")
+
+			local config = tables.copyTable(server_config)
+
+			-- The new API also changed how to process the root directory of the 
+			-- project. The new API uses `root_markers` while the old uses 
+			-- `lspconfig.util.root_pattern`
+			if config["root_markers"] then
+				-- Copy the root directory markers into the older format
+				config.root_dir = lspconfig.util.root_pattern(
+					table.unpack(config.root_markers)
+				)
+				-- Remove obsolete data
+				config.root_markers = nil
+			end
 
 			lspconfig[server_name].setup(server_config)
 		else
+			-- Neovim >= 0.11
 			vim.lsp.config(server_name, server_config)
+			vim.lsp.enable(server_name)
 		end
 	end
 

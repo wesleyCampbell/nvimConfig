@@ -56,9 +56,30 @@ function _makeIndexTable(table)
 end
 
 ------------------------------------------------------------------------------
+--- PRIVATE FUNCTION _copyTable
+---
+--- Description:
+------ Given a table, this function will return a shallow copy of it
+---
+--- :param table : input table
+---
+--- :return table : The copied table
+------------------------------------------------------------------------------
+function _copyTable(table)
+	local copy = {}
+
+	for key, value in pairs(table) do
+		copy[key] = value
+	end
+
+	return copy
+end
+
+------------------------------------------------------------------------------
 --- PUBLIC LIBRARY INTERFACE
 ------------------------------------------------------------------------------
 return {
 	getTableIndex = _getTableIndex,
-	makeIndexTable = _makeIndexTable
+	makeIndexTable = _makeIndexTable,
+	copyTable = _copyTable,
 }

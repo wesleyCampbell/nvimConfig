@@ -1,10 +1,10 @@
 local lspconfig = require("lspconfig")
 
 local jdtls_config = {
-	root_dir = lspconfig.util.root_pattern(
+	root_markers = {
 		"pom.xml",
-		".git"
-	),
+		".git",
+	},
 }
 
 return {
