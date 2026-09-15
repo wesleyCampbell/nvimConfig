@@ -55,7 +55,7 @@ function loadClientConfigs(modules, dir_path)
 			if config["root_markers"] then
 				-- Copy the root directory markers into the older format
 				config.root_dir = lspconfig.util.root_pattern(
-					table.unpack(config.root_markers)
+					unpack(config.root_markers)
 				)
 				-- Remove obsolete data
 				config.root_markers = nil
