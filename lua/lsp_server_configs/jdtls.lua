@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 local jdtls_config = {
 	root_markers = {
 		"pom.xml",

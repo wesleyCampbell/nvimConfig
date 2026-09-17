@@ -1,12 +1,12 @@
 ------------------------------------------------------------------------------
---- lsp_client_configs
+--- lsp_server_configs
 --- 
 --- Author:
 ------ Wesley Campbell
 ---
 --- Description:
 ------ This module automatically imports LSP server configuration files from the 
------- lsp_client_configs directory into the lspconfig file. To import a new 
+------ lsp_server_configs directory into the lspconfig file. To import a new 
 ------ LSP configuration, simply create a new .lua file within the directory
 ------ and return a table with two entries: these being `name` and `config`.
 ------ `name` obviously contains the name of the LSP server, e.g. 'clangd'.
@@ -17,7 +17,7 @@
 local lua_fetch = require("lib.fetch_lua_files")
 local tables = require("lib.tables")
 
-DIR_PATH = "~/.config/nvim/lua/lsp_client_configs"
+DIR_PATH = "~/.config/nvim/lua/lsp_server_configs"
 
 ------------------------------------------------------------------------------
 --- PRIVATE FUNCTION loadClientConfigs
@@ -82,7 +82,7 @@ end
 function _main()
 	local files = lua_fetch.getLuaModuleFileNames(DIR_PATH)
 
-	loadClientConfigs(files, "lsp_client_configs")
+	loadClientConfigs(files, "lsp_server_configs")
 end
 
 ------------------------------------------------------------------------------

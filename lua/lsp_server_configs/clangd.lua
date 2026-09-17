@@ -1,6 +1,3 @@
-local lspconfig = require("lspconfig")
-
-
 local clangd_config = {
   cmd = { "clangd" },  -- You can specify extra flags here
   filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp" },

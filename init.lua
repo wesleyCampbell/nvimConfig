@@ -20,13 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = require("plugins")
 require("lazy").setup(plugins.pluginConfigs)
 plugins.configurePlugins()
--- for moduleName, func in pairs(plugins.pluginConfigFuncs) do
--- 	func()
--- end
 
-require("lsp_client_configs").loadConfigs()
+require("lsp_server_configs").loadConfigs()
 require("custom_configs").loadConfigs()
--- require("keybinds")
--- require("terminal")
--- require("visuals")
 
