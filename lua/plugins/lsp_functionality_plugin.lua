@@ -78,7 +78,7 @@ local _plugin__lspconfig_config = {
 
 local _plugin__nvim_treesitter_opts = {
 	-- A list of parser names, or "all" (the listed parsers MUST always be installed)
-	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "cpp", "python", "perl" },
+	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "cpp", "python", "perl", "latex" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = true,
@@ -118,19 +118,45 @@ local _plugin__nvim_treesitter_opts = {
 	}
 }
 
+-- local _plugin__nvim_treesitter_config = {
+-- 	"nvim-treesitter/nvim-treesitter",
+-- 	branch = 'main',
+-- 	lazy = false,
+-- 	build = ":TSUpdate",
+-- 	config = function ()
+-- 		require('nvim-treesitter.configs').setup(_plugin__nvim_treesitter_opts)
+-- 	end	
+-- }
+
+local treesitterRequiredLanguages = {
+	"c",
+	"lua",
+	"vim",
+	"vimdoc",
+	"query",
+	"markdown",
+	"markdown_inline",
+	"cpp",
+	"python",
+	"perl",
+	"latex",
+}
+
 local _plugin__nvim_treesitter_config = {
-	"nvim-treesitter/nvim-treesitter",
-	branch = 'master',
+	'nvim-treesitter/nvim-treesitter',
 	lazy = false,
 	build = ":TSUpdate",
-	config = function ()
-		require('nvim-treesitter.configs').setup(_plugin__nvim_treesitter_opts)
-	end	
 }
+
+function lspConfigFunction()
+	local treesitter = require('nvim-treesitter')
+	treesitter.install(treesitterRequiredLanguages)
+end
 
 return {
 	_plugin__blink_cmp_config,
 	_plugin__lspconfig_config,
 	_plugin__nvim_treesitter_config,
+	configFunc = lspConfigFunction,
 }
 
