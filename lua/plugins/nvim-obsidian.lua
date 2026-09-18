@@ -55,6 +55,16 @@ local nvimObsidianConfig = {
 		folder = "Assets/Templates",
 		date_format = "%Y-%m-%d",
 	},
+
+	quick_switch = {
+		show_existing_only = true,
+		show_attachments = true,
+	},
+
+	attachments = {
+		folder = "Assets/Images/",
+		confirm_img_paste = true,
+	},
     -- see below for full list of options 👇
   },
 }
