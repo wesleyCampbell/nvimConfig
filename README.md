@@ -94,22 +94,22 @@ end
 
 return {
     myPluginConf,
-    confFunc = postLoadConfig,
+    configFunc = postLoadConfig,
 }
 ```
-Unlike the plugin configuration tables, the post-load configuration function needs to be associated with the key `confFunc`. Following lua syntax, it is also possible to define `confFunc` within the return table as follows:
+Unlike the plugin configuration tables, the post-load configuration function needs to be associated with the key `configFunc`. Following lua syntax, it is also possible to define `configFunc` within the return table as follows:
 ```lua
 -- myPlugin.lua
 
 -- myPluginConf defined above...
 return {
     myPluginConf,
-    confFunc = function()
+    configFunc = function()
         print("This is the same additional config!")
     end
 }
 ```
-This can work for very simple configurations, but often it is better to define a function above then reference it in the return table. This will be required when you wish to include multiple plugins that require post-load configuration in the same file as the return table can only have one `confFunc` value at a time. 
+This can work for very simple configurations, but often it is better to define a function above then reference it in the return table. This will be required when you wish to include multiple plugins that require post-load configuration in the same file as the return table can only have one `configFunc` value at a time. 
     
 ## LSP Server Plugins
 
